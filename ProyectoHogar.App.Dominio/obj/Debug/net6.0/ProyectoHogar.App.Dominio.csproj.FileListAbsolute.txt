@@ -1,0 +1,12 @@
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.csproj.AssemblyReference.cache
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.AssemblyInfoInputs.cache
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.AssemblyInfo.cs
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.csproj.CoreCompileInputs.cache
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\bin\Debug\net6.0\ProyectoHogar.App.Dominio.deps.json
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\bin\Debug\net6.0\ProyectoHogar.App.Dominio.dll
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\bin\Debug\net6.0\ProyectoHogar.App.Dominio.pdb
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.dll
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\refint\ProyectoHogar.App.Dominio.dll
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ProyectoHogar.App.Dominio.pdb
+C:\ProyectosCiclo3\ProyectoHogar.App\ProyectoHogar.App.Dominio\obj\Debug\net6.0\ref\ProyectoHogar.App.Dominio.dll

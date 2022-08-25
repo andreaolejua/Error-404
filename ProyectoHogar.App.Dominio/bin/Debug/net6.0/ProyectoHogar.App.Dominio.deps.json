@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ProyectoHogar.App.Dominio/1.0.0": {
+        "runtime": {
+          "ProyectoHogar.App.Dominio.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ProyectoHogar.App.Dominio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
