@@ -1,9 +1,9 @@
-namespace ProyectoHogar.App.Persistencia.AppRepositorio
+namespace ProyectoHogar.App.Persistencia
 {
 
     using Microsoft.EntityFrameworkCore;
     using ProyectoHogar.App.Dominio;
-    using ProyectoHogar.App.Persistencia;
+    //using ProyectoHogar.App.Persistencia;
 
     public class AppContext:DbContext{
         public DbSet<Persona> Personas{get; set;}
@@ -16,10 +16,9 @@ namespace ProyectoHogar.App.Persistencia.AppRepositorio
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-             if (optionsBuilder.IsConfigured){
-                optionsBuilder.UseSqlServer("Data Source=(localdb)/MSSQLLocalDB;Initial Catalog=ProyectoHogar");
+             if (!optionsBuilder.IsConfigured){
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MMSSQLLocalDB;Initial Catalog=ProyectoHogar;Trusted_Connection=True;");
              }
         }
     }
 }
-
