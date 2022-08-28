@@ -1,7 +1,6 @@
 namespace ProyectoHogar.App.Dominio{
 
     public class Paciente:Persona{
-        public int id{get; set;}
         public string Direccion{get; set;}
         public string Ciudad{get; set;}
         public DateTime FechaNacimiento{get; set;}
