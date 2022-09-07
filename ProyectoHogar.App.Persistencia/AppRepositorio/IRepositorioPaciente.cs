@@ -8,5 +8,6 @@ namespace ProyectoHogar.App.Persistencia{
         Paciente UpdatePaciente(Paciente paciente);
         void DeletePaciente(int idPaciente);
         Paciente GetPaciente(int idPaciente);
+        PatronCrecimiento ToAssignPatron(int idPaciente, int idPatronCrecimiento);
 }
 }

@@ -76,7 +76,6 @@ namespace ProyectoHogar.App.Persistencia.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Apellidos")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Discriminator")
@@ -84,18 +83,15 @@ namespace ProyectoHogar.App.Persistencia.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Documento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Genero")
+                    b.Property<int?>("Genero")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -135,30 +131,28 @@ namespace ProyectoHogar.App.Persistencia.Migrations
                     b.HasBaseType("ProyectoHogar.App.Dominio.Persona");
 
                     b.Property<string>("Correo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Parentesco")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Familiar");
                 });
 
-            modelBuilder.Entity("ProyectoHogar.App.Dominio.Nutricionista", b =>
+            modelBuilder.Entity("ProyectoHogar.App.Dominio.Medico", b =>
                 {
                     b.HasBaseType("ProyectoHogar.App.Dominio.Persona");
 
-                    b.Property<int>("HorasLaborales")
-                        .HasColumnType("int")
-                        .HasColumnName("Nutricionista_HorasLaborales");
+                    b.Property<int?>("HorasLaborales")
+                        .HasColumnType("int");
 
                     b.Property<string>("TarjetaProfesional")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Nutricionista_TarjetaProfesional");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Nutricionista");
+                    b.Property<int>("especialidad")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("Medico");
                 });
 
             modelBuilder.Entity("ProyectoHogar.App.Dominio.Paciente", b =>
@@ -166,41 +160,35 @@ namespace ProyectoHogar.App.Persistencia.Migrations
                     b.HasBaseType("ProyectoHogar.App.Dominio.Persona");
 
                     b.Property<string>("Ciudad")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FechaNacimiento")
+                    b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("familiarId")
+                    b.Property<int?>("NutricionistaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("patronCrecimientoId")
+                    b.Property<int?>("PediatraId")
                         .HasColumnType("int");
+
+                    b.Property<int?>("familiarId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("patronCrecimientoId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("NutricionistaId");
+
+                    b.HasIndex("PediatraId");
 
                     b.HasIndex("familiarId");
 
                     b.HasIndex("patronCrecimientoId");
 
                     b.HasDiscriminator().HasValue("Paciente");
-                });
-
-            modelBuilder.Entity("ProyectoHogar.App.Dominio.Pediatra", b =>
-                {
-                    b.HasBaseType("ProyectoHogar.App.Dominio.Persona");
-
-                    b.Property<int>("HorasLaborales")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TarjetaProfesional")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("Pediatra");
                 });
 
             modelBuilder.Entity("ProyectoHogar.App.Dominio.SugerenciaCuidado", b =>
@@ -212,17 +200,25 @@ namespace ProyectoHogar.App.Persistencia.Migrations
 
             modelBuilder.Entity("ProyectoHogar.App.Dominio.Paciente", b =>
                 {
+                    b.HasOne("ProyectoHogar.App.Dominio.Medico", "Nutricionista")
+                        .WithMany()
+                        .HasForeignKey("NutricionistaId");
+
+                    b.HasOne("ProyectoHogar.App.Dominio.Medico", "Pediatra")
+                        .WithMany()
+                        .HasForeignKey("PediatraId");
+
                     b.HasOne("ProyectoHogar.App.Dominio.Familiar", "familiar")
                         .WithMany()
-                        .HasForeignKey("familiarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("familiarId");
 
                     b.HasOne("ProyectoHogar.App.Dominio.PatronCrecimiento", "patronCrecimiento")
                         .WithMany()
-                        .HasForeignKey("patronCrecimientoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("patronCrecimientoId");
+
+                    b.Navigation("Nutricionista");
+
+                    b.Navigation("Pediatra");
 
                     b.Navigation("familiar");
 

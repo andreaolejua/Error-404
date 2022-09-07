@@ -17,7 +17,7 @@ namespace ProyectoHogar.App.Persistencia
         }
 
         public IEnumerable<Paciente> GetAllPacientes(){
-            return _appContext.Pacientes;//pacientes o paciente?
+            return _appContext.Pacientes;
         }
 
         public Paciente AddPaciente(Paciente paciente){
@@ -56,5 +56,20 @@ namespace ProyectoHogar.App.Persistencia
         public Paciente GetPaciente(int idPaciente){
             return _appContext.Pacientes.FirstOrDefault(p=>p.Id==idPaciente);
         }
-    }
+
+        public PatronCrecimiento ToAssignPatron(int idPaciente, int idPatronCrecimiento){
+            var paciente=_appContext.Pacientes.FirstOrDefault(p=>p.Id==idPaciente);
+            if (paciente!=null)
+            {
+                var patronCrecimiento=_appContext.PatronesCrecimiento.FirstOrDefault(h=>h.Id==idPatronCrecimiento);
+                if (patronCrecimiento!=null)
+                {
+                    paciente.patronCrecimiento=patronCrecimiento;
+                    _appContext.SaveChanges();
+                }
+                return patronCrecimiento;
+            }
+            return null;
+        }
 }
+    }
