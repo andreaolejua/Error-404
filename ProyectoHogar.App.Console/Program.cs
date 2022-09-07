@@ -7,11 +7,20 @@ namespace ProyectoHogar.App.Console
     class Program{
         private static IRepositorioPaciente _repoPaciente=new RepositorioPaciente(new Persistencia.AppContext());
         private static IRepositorioPatronCrecimiento _repoHistoria=new RepositorioPatronCrecimiento(new Persistencia.AppContext());
+        private static IRepositorioFamiliar _repoFamiliar=new RepositorioFamiliar(new Persistencia.AppContext());
+        private static IRepositorioMedico _repoMedico=new RepositorioMedico(new Persistencia.AppContext());
             static void Main(string[] args){
-                    System.Console.WriteLine("Hello, Grupo68!");
-                    AddPaciente();
-                    AddHistoria();
-            }
+                    System.Console.WriteLine("Hello, Error 404!");
+                    //AddPaciente();
+                    //AddHistoria();
+                    //GetAllPacientes();
+                    //GetPaciente(1);
+                    //GetAllPacientes();
+                    //var paciente=GetPaciente(1);
+                    //UpdatePaciente(paciente);
+                    //paciente=GetPaciente(1);
+                    //ToAssignPatron();
+ }
             private static void AddPaciente(){
                 //var historia= _repoHistoria.GetHistoria(1);
 
@@ -26,12 +35,37 @@ namespace ProyectoHogar.App.Console
                 };
                 _repoPaciente.AddPaciente(paciente);
             }
+            private static void GetAllPacientes(){
+                var pacientes=_repoPaciente.GetAllPacientes();
+                foreach (var paciente in pacientes){
+                    System.Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+                }
+            }
+
             private static void AddHistoria(){
                 var patronCrecimiento=new PatronCrecimiento{
                     Diagnostico="Historia 5",  
                 };
                 _repoHistoria.AddPatronCrecimiento(patronCrecimiento);
             }   
+
+            private static Paciente GetPaciente(int idPaciente){
+                var paciente=_repoPaciente.GetPaciente(idPaciente);
+                System.Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+                return paciente;
+            }
+
+            private static void UpdatePaciente(Paciente paciente){
+                paciente.Nombre="Mariana";
+                paciente.Apellidos="Trujillo";
+                paciente.Documento="435343232";
+                _repoPaciente.UpdatePaciente(paciente);
+            }
+
+            private static void ToAssignPatron(){
+                var patronCrecimiento=_repoPaciente.ToAssignPatron(1,1);
+                System.Console.WriteLine(patronCrecimiento.Diagnostico);
+            }
 
     }
 

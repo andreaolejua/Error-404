@@ -3,10 +3,7 @@ public enum Genero{
     Masculino,
     Femenino,
     Nobinario,
-    Intersexual,
-    Transexual,
-    Bisexual,
-    Pansexual
+    Intersexual
 }
 
 }
