@@ -7,8 +7,8 @@ namespace ProyectoHogar.App.Persistencia
 
     public class AppContext:DbContext{
         public DbSet<Persona> Personas{get; set;}
-        public DbSet<Pediatra> Pediatras{get; set;}
-        public DbSet<Nutricionista> Nutricionistas{get;set;}
+        public DbSet<Medico> Pediatras{get; set;}
+        public DbSet<Medico> Nutricionistas{get;set;}
         public DbSet<Familiar> Familiares{get; set;}
         public DbSet<Hogar> Hogares{get; set;}
         public DbSet<PatronCrecimiento> PatronesCrecimiento{get; set;}
@@ -18,7 +18,7 @@ namespace ProyectoHogar.App.Persistencia
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
              if (!optionsBuilder.IsConfigured){
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProyectoHogar;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Data Source=ANDREA\\SQLEXPRESS;Initial Catalog=ProyectoHogar;Trusted_Connection=True;");
              }
         }
     }
